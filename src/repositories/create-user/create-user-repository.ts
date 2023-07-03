@@ -1,17 +1,16 @@
 import { User } from "../../entities/user"
+import { database } from "../users-database"
 import { ICreateUserRepository } from "./protocols"
 
 export class CreateUserRepository implements ICreateUserRepository {
-
-  private users: User[] = []
+  constructor(private data: User[] = database) {}
 
   async findByEmail(email: string): Promise<User | undefined> {
-    const user = this.users.find((user) => user.email === email)
+    const user = this.data.find((user) => user.email === email)
     return user
   }
 
   async save(user: User): Promise<void> {
-    this.users.push(user)
+    this.data.push(user)
   }
-  
 }

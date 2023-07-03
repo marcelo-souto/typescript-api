@@ -1,5 +1,3 @@
-import { User } from "../../entities/user"
-
 export interface ICreateUserParams {
   name: string
   email: string

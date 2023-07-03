@@ -4,7 +4,7 @@ import { ICreateUserController } from "./protocols"
 export class CreateUserController implements ICreateUserController {
   constructor(private createUserUseCase: ICreateUserUseCase) {}
 
-  async handle(ctx: IHttpContext) {
+  async handle(ctx: IHttpContext): Promise<void> {
     const { email, password, name } = ctx.getRequest().body
 
     try {
