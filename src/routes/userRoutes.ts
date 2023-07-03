@@ -9,6 +9,4 @@ router.post("/users", (req, res) => {
   createUserController.handle(adapter)
 })
 
-router.get("/users", (req, res) => res.send("Rodou"))
-
 export default router

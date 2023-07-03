@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { IHttpContext } from "./protocols"
-import { IHttpRequest, IHttpResponse } from "../../controllers/protocols"
+import { IHttpRequest, IHttpResponse } from "./protocols"
 
 export class ExpressAdapter implements IHttpContext {
   constructor(private request: Request, private response: Response) {}

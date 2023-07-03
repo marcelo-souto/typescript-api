@@ -1,7 +1,7 @@
 import { User } from "../../entities/user"
-import { IUsersRepository } from "./protocols"
+import { ICreateUserRepository } from "./protocols"
 
-export class UsersRepository implements IUsersRepository {
+export class CreateUserRepository implements ICreateUserRepository {
 
   private users: User[] = []
 

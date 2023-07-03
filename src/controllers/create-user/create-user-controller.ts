@@ -1,10 +1,6 @@
 import { IHttpContext } from "../../adapters/http-adapter/protocols"
-import {
-  ICreateUserParams,
-  ICreateUserUseCase,
-} from "../../use-cases/create-user/protocols"
+import { ICreateUserUseCase } from "../../use-cases/create-user/protocols"
 import { ICreateUserController } from "./protocols"
-
 export class CreateUserController implements ICreateUserController {
   constructor(private createUserUseCase: ICreateUserUseCase) {}
 

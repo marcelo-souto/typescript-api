@@ -1,13 +1,12 @@
 import { User } from "../../entities/user"
 import { ICreateUserParams, ICreateUserUseCase } from "./protocols"
-import { IUsersRepository } from "../../repositories/users-repository/protocols"
-import { v4  } from "uuid"
+import { ICreateUserRepository } from "../../repositories/create-user/protocols"
+import { v4 } from "uuid"
 
 export class CreateUserUseCase implements ICreateUserUseCase {
-  constructor(private readonly usersRepository: IUsersRepository) {}
+  constructor(private readonly usersRepository: ICreateUserRepository) {}
 
   async execute({ email, name, password }: ICreateUserParams): Promise<void> {
-
     const userAlreadyExists = await this.usersRepository.findByEmail(email)
     if (userAlreadyExists) throw new Error("User already exists.")
 
