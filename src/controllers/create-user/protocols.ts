@@ -1,5 +1,5 @@
 import { IHttpResponse, IHttpRequest } from "../protocols"
-
+import { IHttpContext } from "../../adapters/http-adapter/protocols"
 export interface ICreateUserController {
-  handle(request: IHttpRequest): Promise<IHttpResponse<string>>
+  handle(context: IHttpContext): void
 }
