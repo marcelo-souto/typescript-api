@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "tsx src/use-cases/create-user/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +20,9 @@
     "prettier": "^2.8.8",
     "ts-jest": "^29.1.1",
     "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "tsx": "^3.12.7",
+    "uuidv4": "^6.2.13"
   }
 }
