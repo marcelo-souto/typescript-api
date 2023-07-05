@@ -1,4 +1,4 @@
-import { GetUsersController } from "../../controllers/get-users/protocols"
+import { GetUsersController } from "../../controllers/get-users/get-users-controller"
 import { GetUsersRepository } from "../../repositories/get-users/get-users-repository"
 import { GetUsersUseCase } from "./get-users-use-case"
 
