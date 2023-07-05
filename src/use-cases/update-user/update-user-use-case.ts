@@ -8,7 +8,7 @@ export class UpdateUserUseCase implements IUpdateUserUseCase {
   async execute(data: IUpdateUserParams): Promise<void> {
 
     const user = await this.updateUserRepository.findById(data.id)
-    if (!user) throw new Error("User was not found.")
+    if (!user) throw new Error("Usuário não encontrado")
 
     const updatedUser = new User({
       ...user,

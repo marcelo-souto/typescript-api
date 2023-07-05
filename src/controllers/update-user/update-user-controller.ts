@@ -15,7 +15,7 @@ export class UpdateUserController implements IUpdateUserController {
         email,
       })
 
-      ctx.sendResponse({ statusCode: 200, body: "Successfully updated." })
+      ctx.sendResponse({ statusCode: 200, body: "Atualizado com sucesso." })
     } catch (error: any) {
       ctx.sendResponse({ statusCode: 400, body: error.message })
     }
