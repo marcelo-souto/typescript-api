@@ -6,5 +6,5 @@ export interface IAuthenticateUserParams {
 }
 
 export interface IAuthenticateUserUseCase {
-  execute(data: IAuthenticateUserParams): Promise<User>
+  execute(data: IAuthenticateUserParams): Promise<string>
 }
