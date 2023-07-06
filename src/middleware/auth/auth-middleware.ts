@@ -12,9 +12,7 @@ export class AuthMiddleware {
       try {
         if (!token) throw new Error()
 
-        const data = this.jsonWebTokenProvider.verifyToken<{ id: string }>(
-          token
-        )
+        const data = this.jsonWebTokenProvider.verifyToken<{ id: string }>(token)
         req.body.id = data.id
 
         next()

@@ -1,36 +1,29 @@
 import { Router } from "express"
 import { ExpressAdapter } from "../adapters/http-adapter/express-adapter"
 import { createUserController } from "../use-cases/create-user"
-import { getUsersController } from "../use-cases/get-users"
+import { getUserController } from "../use-cases/get-user"
 import { updateUserController } from "../use-cases/update-user"
 import { authenticateUserController } from "../use-cases/authenticate-user"
-
-import { AuthMiddleware } from "../middleware/auth/auth-middleware"
-import { JsonWebTokenProvider } from "../providers/json-web-token-provider/json-web-token-provider"
-
-import { secretKey } from "../config/enviroment-variables"
-
-const jsonWebTokenProvider = new JsonWebTokenProvider(secretKey)
-const authMiddleware = new AuthMiddleware(jsonWebTokenProvider)
+import { authMiddleware } from "../middleware/auth"
 
 const router = Router()
 
-router.post("/users", (req, res) => {
+router.post("/create", (req, res) => {
   const adapter = new ExpressAdapter(req, res)
   createUserController.handle(adapter)
 })
 
-router.post("/users/auth", (req, res) => {
+router.post("/auth", (req, res) => {
   const adapter = new ExpressAdapter(req, res)
   authenticateUserController.handle(adapter)
 })
 
-router.get("/users", (req, res) => {
+router.get("/me", authMiddleware.handle(), (req, res) => {
   const adapter = new ExpressAdapter(req, res)
-  getUsersController.handle(adapter)
+  getUserController.handle(adapter)
 })
 
-router.put("/users", authMiddleware.handle(), (req, res) => {
+router.put("/update", authMiddleware.handle(), (req, res) => {
   const adapter = new ExpressAdapter(req, res)
   updateUserController.handle(adapter)
 })

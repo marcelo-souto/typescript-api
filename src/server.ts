@@ -6,6 +6,6 @@ import userRoutes from "./routes/user-routes"
 const server = express()
 server.use(express.json())
 
-server.use(userRoutes)
+server.use('/users', userRoutes)
 
 server.listen(port, () => console.log(`Server running on port ${port}`))

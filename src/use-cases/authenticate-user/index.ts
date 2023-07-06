@@ -3,11 +3,11 @@ import { JsonWebTokenProvider } from "../../providers/json-web-token-provider/js
 import { AuthenticateUserRepository } from "../../repositories/authenticate-user/authenticate-user-repository"
 import { AuthenticateUserUseCase } from "./authenticate-user-use-case"
 
-import { secretKey } from "../../config/enviroment-variables"
+import { jwtExpirationDate, secretKey } from "../../config/enviroment-variables"
 
 const authenticateUserRepository = new AuthenticateUserRepository()
 
-const jsonWebTokenProvider = new JsonWebTokenProvider(secretKey, '1d')
+const jsonWebTokenProvider = new JsonWebTokenProvider(secretKey, jwtExpirationDate)
 const authenticateUserUseCase = new AuthenticateUserUseCase(
   authenticateUserRepository,
   jsonWebTokenProvider
