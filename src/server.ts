@@ -5,10 +5,14 @@ import { connectToDatabase } from "./database/data-source"
 import userRoutes from "./routes/user-routes"
 
 connectToDatabase()
+  .then(() => {
 
-const server = express()
-server.use(express.json())
+    const server = express()
+    server.use(express.json())
 
-server.use('/users', userRoutes)
+    server.use("/users", userRoutes)
+    
+    server.listen(port, () => console.log(`Server running on port ${port}`))
 
-server.listen(port, () => console.log(`Server running on port ${port}`))
+  })
+  .catch((error) => console.log(error.message))

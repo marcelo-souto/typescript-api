@@ -6,7 +6,6 @@ export class CreateUserRepository implements ICreateUserRepository {
   constructor(private dataSource: DataSource) {}
 
   async findByEmail(email: string): Promise<User | null> {
-
     const user = await this.dataSource
       .getRepository(User)
       .findOne({ where: { email: email } })
