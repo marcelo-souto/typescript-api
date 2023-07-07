@@ -5,9 +5,9 @@ import { IGetUserRepository } from "./protocols"
 export class GetUserRepository implements IGetUserRepository {
   constructor(private dataSource: DataSource) {}
 
-  async findById(id: string): Promise<User | null> {
+  async findById(id: string): Promise<Omit<User, "password"> | null> {
     const user = await this.dataSource.getRepository(User).findOne({
-      where: { id: id },
+      where: { id: id }, select: ["email", "id", "name"]
     })
     return user
   }
