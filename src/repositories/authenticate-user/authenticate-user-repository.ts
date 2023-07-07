@@ -1,12 +1,14 @@
-import { User } from "../../entities/user"
-import { database } from "../users-database"
+import { DataSource } from "typeorm"
+import { User } from "../../entities/User"
 import { IAuthenticateUserRepository } from "./protocols"
 
 export class AuthenticateUserRepository implements IAuthenticateUserRepository {
-  constructor(private readonly data: User[] = database) {}
+  constructor(private readonly dataSource: DataSource) {}
 
-  async findByEmail(email: string): Promise<User | undefined> {
-    const user = this.data.find((user) => user.email === email)
+  async findByEmail(email: string): Promise<User | null> {
+    const user = await this.dataSource.getRepository(User).findOne({
+      where: { email: email },
+    })
     return user
   }
 }

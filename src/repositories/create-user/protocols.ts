@@ -1,6 +1,6 @@
-import { User } from "../../entities/user"
+import { User } from "../../entities/User"
 
 export interface ICreateUserRepository {
-  findByEmail(email: string): Promise<User | undefined>
+  findByEmail(email: string): Promise<User | null>
   save(user: User): Promise<void>
 }

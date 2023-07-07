@@ -1,16 +1,20 @@
-import { User } from "../../entities/user"
-import { database } from "../users-database"
+import { DataSource } from "typeorm"
+import { User } from "../../entities/User"
 import { ICreateUserRepository } from "./protocols"
 
 export class CreateUserRepository implements ICreateUserRepository {
-  constructor(private data: User[] = database) {}
+  constructor(private dataSource: DataSource) {}
 
-  async findByEmail(email: string): Promise<User | undefined> {
-    const user = this.data.find((user) => user.email === email)
+  async findByEmail(email: string): Promise<User | null> {
+
+    const user = await this.dataSource
+      .getRepository(User)
+      .findOne({ where: { email: email } })
+
     return user
   }
 
   async save(user: User): Promise<void> {
-    this.data.push(user)
+    await this.dataSource.getRepository(User).save(user)
   }
 }

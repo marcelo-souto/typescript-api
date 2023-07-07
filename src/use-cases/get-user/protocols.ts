@@ -1,5 +1,5 @@
-import { User } from "../../entities/user"
+import { User } from "../../entities/User"
 
 export interface IGetUserUseCase {
-  execute(id: string): Promise<User | undefined>
+  execute(id: string): Promise<User | never>
 }

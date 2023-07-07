@@ -1,16 +1,30 @@
-import { User } from "../../entities/user"
-import { database } from "../users-database"
+import { DataSource } from "typeorm"
+import { User } from "../../entities/User"
 import { IUpdateUserRepository } from "./protocols"
 
 export class UpdateUserRepository implements IUpdateUserRepository {
-  constructor(private data: User[] = database) {}
+  constructor(private dataSource: DataSource) {}
 
-  async findById(id: string): Promise<User | undefined> {
-    return this.data.find((user) => user.id === id)
+  async findById(id: string): Promise<User | null> {
+    const user = await this.dataSource
+      .getRepository(User)
+      .findOne({ where: { id: id } })
+
+    return user
+  }
+
+  async findByEmail(email: string): Promise<User | null> {
+    
+    const user = await this.dataSource
+      .getRepository(User)
+      .findOne({ where: { email: email } })
+
+    return user
   }
 
   async update(updatedUser: User): Promise<void> {
-    this.data = this.data.filter((user) => user.id !== updatedUser.id)
-    this.data.push(updatedUser)
+    await this.dataSource
+      .getRepository(User)
+      .update(updatedUser.id, updatedUser)
   }
 }

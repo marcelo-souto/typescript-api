@@ -1,5 +1,5 @@
-import { User } from "../../entities/user"
+import { User } from "../../entities/User"
 
 export interface IGetUserRepository {
-  findById(id: string): Promise<User | undefined>
+  findById(id: string): Promise<User | null>
 }
