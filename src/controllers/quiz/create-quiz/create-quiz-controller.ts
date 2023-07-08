@@ -1,5 +1,5 @@
 import { IHttpContext } from "../../../adapters/http-adapter/protocols"
-import { ICreateQuizUseCase } from "../../../use-cases/create-quiz/protocols"
+import { ICreateQuizUseCase } from "../../../use-cases/quiz/create-quiz/protocols"
 import { ICreateQuizController } from "./protocols"
 
 export class CreateQuizController implements ICreateQuizController {

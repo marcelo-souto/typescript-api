@@ -1,4 +1,4 @@
-import { Quiz } from "../../entities/Quiz"
+import { Quiz } from "../../../entities/Quiz"
 
 export interface ICreateQuizParams {
   id: string
