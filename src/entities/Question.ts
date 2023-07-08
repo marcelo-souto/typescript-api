@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm"
-import { User } from "./User"
+import { Quiz } from "./Quiz"
 
 @Entity("questions")
 export class Question {
@@ -12,6 +12,6 @@ export class Question {
   @Column({ type: "varchar", length: 255 })
   corrected_option: string
 
-  @ManyToOne(() => User, user => user.questions)
-  user: User
+  @ManyToOne(() => Quiz, quiz => quiz.questions)
+  quiz: Quiz
 }

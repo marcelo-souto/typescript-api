@@ -1,9 +1,9 @@
 import { Router } from "express"
 import { ExpressAdapter } from "../adapters/http-adapter/express-adapter"
-import { createUserController } from "../use-cases/create-user"
-import { getUserController } from "../use-cases/get-user"
-import { updateUserController } from "../use-cases/update-user"
-import { authenticateUserController } from "../use-cases/authenticate-user"
+import { createUserController } from "../use-cases/user/create-user"
+import { getUserController } from "../use-cases/user/get-user"
+import { updateUserController } from "../use-cases/user/update-user"
+import { authenticateUserController } from "../use-cases/user/authenticate-user"
 import { authMiddleware } from "../middleware/auth"
 
 const router = Router()

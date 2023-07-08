@@ -1,6 +1,5 @@
 import { Column, Entity, PrimaryColumn, OneToMany } from "typeorm"
 import { Quiz } from "./Quiz"
-import { Question } from "./Question"
 
 @Entity("users")
 export class User {
@@ -18,7 +17,4 @@ export class User {
 
   @OneToMany(() => Quiz, (quiz) => quiz.user)
   quizzes: Quiz[]
-
-  @OneToMany(() => Question, (question) => question.user)
-  questions: Question[]
 }

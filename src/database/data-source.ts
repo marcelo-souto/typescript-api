@@ -1,9 +1,6 @@
 import "dotenv/config"
 import "reflect-metadata"
-import { DataSource, SimpleConsoleLogger } from "typeorm"
-import { User } from "../entities/User"
-import { Question } from "../entities/Question"
-import { Quiz } from "../entities/Quiz"
+import { DataSource } from "typeorm"
 
 const port = process.env.DB_PORT as number | undefined
 

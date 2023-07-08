@@ -3,6 +3,7 @@ import { port } from "./config/enviroment-variables"
 import { connectToDatabase } from "./database/data-source"
 
 import userRoutes from "./routes/user-routes"
+import quizRoutes from "./routes/quiz-routes"
 
 connectToDatabase()
   .then(() => {
@@ -10,7 +11,8 @@ connectToDatabase()
     const server = express()
     server.use(express.json())
 
-    server.use("/users", userRoutes)
+    server.use("/user", userRoutes)
+    server.use("/quiz", quizRoutes)
     
     server.listen(port, () => console.log(`Server running on port ${port}`))
 

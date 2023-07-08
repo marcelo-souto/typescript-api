@@ -1,8 +1,7 @@
 import {
   Entity,
-  JoinTable,
-  ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryColumn,
 } from "typeorm"
 import { User } from "./User"
@@ -16,7 +15,6 @@ export class Quiz {
   @ManyToOne(() => User, (user) => user.quizzes)
   user: User
 
-  @ManyToMany(() => Question)
-  @JoinTable()
+  @OneToMany(() => Question, question => question.quiz)
   questions: Question[]
 }
