@@ -13,6 +13,7 @@ export const appDataSource = new DataSource({
   database: process.env.DB_NAME,
   entities: ["./src/entities/*.ts"],
   migrations: ["./src/database/migrations/*.ts"],
+  ssl: {}
 })
 
 export const connectToDatabase = async () => {
