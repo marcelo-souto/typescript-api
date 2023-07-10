@@ -1,7 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm"
 import { Quiz } from "./Quiz"
 
-type Options = "a" | "b" | "c" | "d" | "e"
 @Entity("questions")
 export class Question {
   @PrimaryColumn()
@@ -11,7 +10,7 @@ export class Question {
   text: string
 
   @Column({ type: "json" })
-  options: Record<Options, string>
+  options: string[]
 
   @Column({ type: "varchar", length: 255 })
   corrected_option: string

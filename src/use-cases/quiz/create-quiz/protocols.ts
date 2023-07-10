@@ -1,5 +1,4 @@
 import { Question } from "../../../entities/Question"
-import { Quiz } from "../../../entities/Quiz"
 
 export interface ICreateQuizParams {
   id: string
