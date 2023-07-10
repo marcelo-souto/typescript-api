@@ -1,9 +1,4 @@
-import {
-  Entity,
-  ManyToOne,
-  OneToMany,
-  PrimaryColumn,
-} from "typeorm"
+import { Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm"
 import { User } from "./User"
 import { Question } from "./Question"
 
@@ -15,6 +10,6 @@ export class Quiz {
   @ManyToOne(() => User, (user) => user.quizzes)
   user: User
 
-  @OneToMany(() => Question, question => question.quiz)
+  @OneToMany(() => Question, (question) => question.quiz, { cascade: true, eager: false })
   questions: Question[]
 }

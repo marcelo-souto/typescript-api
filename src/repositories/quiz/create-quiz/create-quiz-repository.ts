@@ -14,8 +14,8 @@ export class CreateQuizRepository implements ICreateQuizRepository {
     return user
   }
 
-  async create(quiz: Omit<Quiz, "questions">): Promise<Pick<Quiz, "id">> {
+  async create(quiz: Quiz): Promise<Quiz> {
     const newQuiz = this.dataSource.getRepository(Quiz).save(quiz)
-    return { id: (await newQuiz).id }
+    return newQuiz
   }
 }

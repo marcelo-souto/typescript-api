@@ -6,11 +6,11 @@ export class CreateQuizController implements ICreateQuizController {
   constructor(private createQuizUseCase: ICreateQuizUseCase) {}
 
   async handle(ctx: IHttpContext): Promise<void> {
-    const { id } = ctx.getRequest().body
+    const { id, questions } = ctx.getRequest().body
 
     try {
-      const quiz = await this.createQuizUseCase.execute({ id })
-      ctx.sendResponse({ statusCode: 201, body: quiz })
+      await this.createQuizUseCase.execute({ id, questions })
+      ctx.sendResponse({ statusCode: 201, body: "Criado com sucesso." })
     } catch (error: any) {
       ctx.sendResponse({ statusCode: 400, body: error.message })
     }
