@@ -10,6 +10,10 @@ export class Quiz {
   @ManyToOne(() => User, (user) => user.quizzes)
   user: User
 
-  @OneToMany(() => Question, (question) => question.quiz, { cascade: true, eager: false })
+  @OneToMany(() => Question, (question) => question.quiz, {
+    cascade: ["insert", "remove", "update"],
+    onDelete: "CASCADE",
+    eager: false,
+  })
   questions: Question[]
 }

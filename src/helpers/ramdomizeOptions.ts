@@ -1,10 +1,19 @@
-const randomizeOptions = (options: string[]): string[] => {
-  for (let i = options.length - 1; i > 0; i--) {
+const randomizeOptions = (
+  options: string[],
+  corrected_option: string
+): string[] => {
+
+  const optionsWithCorreted = [...options, corrected_option]
+
+  for (let i = optionsWithCorreted.length - 1; i > 0; i--) {
     const randomIndex = Math.floor(Math.random() * i)
-    ;[options[i], options[randomIndex]] = [options[randomIndex], options[i]]
+    ;[optionsWithCorreted[i], optionsWithCorreted[randomIndex]] = [
+      optionsWithCorreted[randomIndex],
+      optionsWithCorreted[i],
+    ]
   }
 
-  return options
+  return optionsWithCorreted
 }
 
 export { randomizeOptions }

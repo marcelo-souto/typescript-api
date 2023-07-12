@@ -15,6 +15,6 @@ export class Question {
   @Column({ type: "varchar", length: 255 })
   corrected_option: string
 
-  @ManyToOne(() => Quiz, (quiz) => quiz.questions)
+  @ManyToOne(() => Quiz, (quiz) => quiz.questions, { onDelete: "CASCADE" })
   quiz: Quiz
 }
