@@ -26,8 +26,10 @@ export class CorrectQuizUseCase implements ICorrectQuizUseCase {
     }).length
 
     const result = {
-      corrected: correctedAnswersQuantity,
-      errors: questionsQuantity - correctedAnswersQuantity,
+      user: email,
+      rightAnswers: correctedAnswersQuantity,
+      wrongAnswers: questionsQuantity - correctedAnswersQuantity,
+      answered: questionsQuantity,
       score: correctedAnswersQuantity,
       performance: correctedAnswersQuantity * 100 / questionsQuantity
     }

@@ -1,8 +1,9 @@
 export interface ICorrectQuizResponse {
-  corrected: number
-  errors: number
+  rightAnswers: number
+  wrongAnswers: number
   score: number,
-  performance: number
+  performance: number,
+  answered: number
 }
 
 export interface IUserAnswer {
