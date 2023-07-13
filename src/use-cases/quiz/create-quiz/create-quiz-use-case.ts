@@ -1,7 +1,6 @@
 import { v4 } from "uuid"
 import { ICreateQuizRepository } from "../../../repositories/quiz/create-quiz/protocols"
 import { ICreateQuizParams, ICreateQuizUseCase } from "./protocols"
-import { validate } from "../../../helpers/validate"
 
 export class CreateQuizUseCase implements ICreateQuizUseCase {
   
@@ -11,8 +10,6 @@ export class CreateQuizUseCase implements ICreateQuizUseCase {
     
     const user = await this.createQuizRepository.findUserById(id)
     if (!user) throw new Error("Usuário não encontrado.")
-
-    validate({ data: { name }, isRequired: true })
 
     const questionsWithId = questions.map((question) => ({
       ...question,

@@ -8,6 +8,7 @@ import { correctQuizController } from "../use-cases/quiz/correct-quiz"
 import { validationDataMiddleware } from "../middleware/validation-data"
 
 import { createQuizSchema } from "../use-cases/quiz/create-quiz/create-quiz-zod-schema"
+import { correctQuizSchema } from "../use-cases/quiz/correct-quiz/correct-quiz-zod-schema"
 
 const router = Router()
 
@@ -31,9 +32,13 @@ router.delete("/:id", authMiddleware.handle(), (req, res) => {
   deleteQuizController.handle(adapter)
 })
 
-router.post("/correct", (req, res) => {
-  const adapter = new ExpressAdapter(req, res)
-  correctQuizController.handle(adapter)
-})
+router.post(
+  "/correct",
+  validationDataMiddleware.handle(correctQuizSchema),
+  (req, res) => {
+    const adapter = new ExpressAdapter(req, res)
+    correctQuizController.handle(adapter)
+  }
+)
 
 export default router
