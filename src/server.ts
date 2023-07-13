@@ -1,4 +1,5 @@
 import express from "express"
+import cors from "cors"
 import { port } from "./config/enviroment-variables"
 import { connectToDatabase } from "./database/data-source"
 
@@ -9,12 +10,13 @@ connectToDatabase()
   .then(() => {
 
     const server = express()
+    
+    server.use(cors())
     server.use(express.json())
 
     server.use("/user", userRoutes)
     server.use("/quiz", quizRoutes)
-    
-    server.listen(port, () => console.log(`Server running on port ${port}`))
 
+    server.listen(port, () => console.log(`Server running on port ${port}`))
   })
   .catch((error) => console.log(error.message))
