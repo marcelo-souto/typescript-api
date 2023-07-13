@@ -1,4 +1,4 @@
-import { Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm"
+import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm"
 import { User } from "./User"
 import { Question } from "./Question"
 
@@ -6,6 +6,9 @@ import { Question } from "./Question"
 export class Quiz {
   @PrimaryColumn()
   id: string
+
+  @Column({ type: "varchar" })
+  name: string
 
   @ManyToOne(() => User, (user) => user.quizzes)
   user: User

@@ -2,6 +2,7 @@ import { Question } from "../../../entities/Question"
 
 export interface ICreateQuizParams {
   id: string
+  name: string
   questions: Question[]
 }
 

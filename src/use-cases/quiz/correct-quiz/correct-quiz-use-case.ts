@@ -6,6 +6,7 @@ import {
 } from "./protocols"
 
 export class CorrectQuizUseCase implements ICorrectQuizUseCase {
+
   constructor(private readonly correctQuizRepository: ICorrectQuizRepository) {}
 
   async execute(data: ICorrectQuizParams): Promise<ICorrectQuizResponse> {
@@ -17,8 +18,7 @@ export class CorrectQuizUseCase implements ICorrectQuizUseCase {
 
     const questionsQuantity = quiz.questions.length
 
-    if (questionsQuantity !== answers.length)
-      throw new Error("Respondas todas perguntas do quiz")
+    if (questionsQuantity !== answers.length) throw new Error("Responda todas perguntas do quiz")
 
     const correctedAnswersQuantity = answers.filter(({ id, answer }) => {
       const question = quiz.questions.find((option) => option.id === id)
