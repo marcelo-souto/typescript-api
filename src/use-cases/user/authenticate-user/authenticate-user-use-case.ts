@@ -10,6 +10,7 @@ export class AuthenticateUserUseCase implements IAuthenticateUserUseCase {
   ) {}
 
   async execute({ email, password }: IAuthenticateUserParams): Promise<string> {
+    
     const user = await this.authenticateUserRepository.findByEmail(email)
     if (!user) throw new Error("Usuário ou senha incorretos.")
 

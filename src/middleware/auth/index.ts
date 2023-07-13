@@ -5,4 +5,4 @@ import { AuthMiddleware } from "./auth-middleware"
 const jsonWebTokenProvider = new JsonWebTokenProvider(secretKey)
 const authMiddleware = new AuthMiddleware(jsonWebTokenProvider)
 
-export {authMiddleware}
+export { authMiddleware }
