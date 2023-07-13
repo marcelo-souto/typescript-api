@@ -5,13 +5,21 @@ import { authMiddleware } from "../middleware/auth"
 import { getQuizController } from "../use-cases/quiz/get-quiz"
 import { deleteQuizController } from "../use-cases/quiz/delete-quiz"
 import { correctQuizController } from "../use-cases/quiz/correct-quiz"
+import { validationDataMiddleware } from "../middleware/validation-data"
+
+import { createQuizSchema } from "../use-cases/quiz/create-quiz/create-quiz-zod-schema"
 
 const router = Router()
 
-router.post("/", authMiddleware.handle(), (req, res) => {
-  const adapter = new ExpressAdapter(req, res)
-  createQuizController.handle(adapter)
-})
+router.post(
+  "/",
+  authMiddleware.handle(),
+  validationDataMiddleware.handle(createQuizSchema),
+  (req, res) => {
+    const adapter = new ExpressAdapter(req, res)
+    createQuizController.handle(adapter)
+  }
+)
 
 router.get("/:id", (req, res) => {
   const adapter = new ExpressAdapter(req, res)
