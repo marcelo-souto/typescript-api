@@ -10,12 +10,14 @@ connectToDatabase()
   .then(() => {
 
     const server = express()
-    
+
     server.use(cors())
     server.use(express.json())
 
     server.use("/user", userRoutes)
     server.use("/quiz", quizRoutes)
+
+    server.get('/', (req, res) => res.send("<h1>Server running ...</h1>"))
 
     server.listen(port, () => console.log(`Server running on port ${port}`))
   })
