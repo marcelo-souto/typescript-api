@@ -28,7 +28,7 @@ router.get("/:id", (req, res) => {
   getQuizController.handle(adapter)
 })
 
-router.get("/", (req, res) => {
+router.get("/", authMiddleware.handle(), (req, res) => {
   const adapter = new ExpressAdapter(req, res)
   getQuizByUserController.handle(adapter)
 })
