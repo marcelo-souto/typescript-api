@@ -10,9 +10,9 @@ export class CreateUserController implements ICreateUserController {
 
     try {
       await this.createUserUseCase.execute({ name, email, password })
-      ctx.sendResponse({ statusCode: 201, body: "Criado com sucesso" })
+      ctx.sendResponse({ statusCode: 201, message: "Criado com sucesso" })
     } catch (error: any) {
-      ctx.sendResponse({ statusCode: 400, body: error.message })
+      ctx.sendResponse({ statusCode: 400, message: error.message })
     }
   }
 }

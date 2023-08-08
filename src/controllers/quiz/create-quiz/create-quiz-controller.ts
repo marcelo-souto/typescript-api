@@ -10,9 +10,9 @@ export class CreateQuizController implements ICreateQuizController {
 
     try {
       await this.createQuizUseCase.execute({ id, questions, name })
-      ctx.sendResponse({ statusCode: 201, body: "Criado com sucesso." })
+      ctx.sendResponse({ statusCode: 201, message: "Criado com sucesso." })
     } catch (error: any) {
-      ctx.sendResponse({ statusCode: 400, body: error.message })
+      ctx.sendResponse({ statusCode: 400, message: error.message })
     }
   }
 }

@@ -12,6 +12,8 @@ export class ExpressAdapter implements IHttpContext {
     }
   }
   sendResponse(response: IHttpResponse): void {
-    this.response.status(response.statusCode).json(response.body)
+    this.response
+      .status(response.statusCode)
+      .json({ message: response.message, data: response.data })
   }
 }

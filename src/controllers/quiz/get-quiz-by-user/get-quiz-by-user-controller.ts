@@ -11,9 +11,9 @@ export class GetQuizByUserController implements IGetQuizByUserController {
 
     try {
       const quizzes = await this.getQuizByUserUseCase.execute(id)
-      ctx.sendResponse({ statusCode: 200, body: quizzes })
+      ctx.sendResponse({ statusCode: 200, data: quizzes })
     } catch (error: any) {
-      ctx.sendResponse({ statusCode: 400, body: error.message })
+      ctx.sendResponse({ statusCode: 400, message: error.message })
     }
   }
 }

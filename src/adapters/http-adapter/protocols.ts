@@ -1,6 +1,7 @@
 export interface IHttpResponse {
   statusCode: number
-  body?: any
+  message?: any
+  data?: any
 }
 
 export interface IHttpRequest {

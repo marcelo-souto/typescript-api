@@ -11,10 +11,10 @@ export class GetQuizController implements IGetQuizController {
     try {
       
       const quiz = await this.getQuizUseCase.execute(id)
-      ctx.sendResponse({ statusCode: 200, body: quiz })
+      ctx.sendResponse({ statusCode: 200, data: quiz })
 
     } catch (error: any) {
-      ctx.sendResponse({ statusCode: 404, body: error.message })
+      ctx.sendResponse({ statusCode: 404, message: error.message })
     }
   }
 }

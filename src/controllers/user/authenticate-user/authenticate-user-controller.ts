@@ -14,9 +14,9 @@ export class AuthenticateUserController implements IAuthenticateUserController {
         password,
       })
 
-      ctx.sendResponse({ statusCode: 200, body: data })
+      ctx.sendResponse({ statusCode: 200, data })
     } catch (error: any) {
-      ctx.sendResponse({ statusCode: 400, body: error.message })
+      ctx.sendResponse({ statusCode: 400, message: error.message })
     }
   }
 }

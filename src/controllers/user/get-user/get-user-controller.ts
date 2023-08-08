@@ -9,10 +9,10 @@ export class GetUserController implements IGetUserController {
     const { id } = ctx.getRequest().body
 
     try {
-      const users = await this.getUserUseCase.execute(id)
-      ctx.sendResponse({ statusCode: 201, body: users })
+      const user = await this.getUserUseCase.execute(id)
+      ctx.sendResponse({ statusCode: 201, data: user })
     } catch (error: any) {
-      ctx.sendResponse({ statusCode: 400, body: error.message })
+      ctx.sendResponse({ statusCode: 400, message: error.message })
     }
   }
 }

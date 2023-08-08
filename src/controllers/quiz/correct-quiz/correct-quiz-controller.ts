@@ -17,9 +17,9 @@ export class CorrectQuizController implements ICorrectQuizController {
         answers,
       })
 
-      ctx.sendResponse({ statusCode: 200, body: response })
+      ctx.sendResponse({ statusCode: 200, data: response })
     } catch (error: any) {
-      ctx.sendResponse({ statusCode: 400, body: error.message })
+      ctx.sendResponse({ statusCode: 400, message: error.message })
     }
     
   }

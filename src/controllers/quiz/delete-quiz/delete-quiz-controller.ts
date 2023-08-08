@@ -11,9 +11,9 @@ export class DeleteQuizController implements IDeleteQuizController {
 
     try {
       await this.deleteQuizUseCase.execute({ id, quiz_id })
-      ctx.sendResponse({ statusCode: 200, body: "Excluido com sucesso." })
+      ctx.sendResponse({ statusCode: 200, message: "Excluido com sucesso." })
     } catch (error: any) {
-      ctx.sendResponse({ statusCode: 400, body: error.message })
+      ctx.sendResponse({ statusCode: 400, message: error.message })
     }
   }
 }
